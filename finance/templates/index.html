@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table class="table" action="/index">
+      <thead>
+        <tr>
+          <th scope="col">Stock</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <td>{{stock.symbol}}</td>
+                <td>{{stock.sum_shares}}</td>
+                <td>{{prices[loop.index - 1] | usd }}</td>
+                <td>{{values[loop.index - 1] | usd }}</td>
+            </tr>
+
+        {% endfor %}
+      </tbody>
+      <tfoot>
+          <tr>
+              <td>Current Cash:</td>
+              <td>{{cash | usd }}</td>
+              <td>Total Value:</td>
+              <td>{{total_value | usd }}</td>
+          </tr>
+      </tfoot>
+    </table>
+{% endblock %}

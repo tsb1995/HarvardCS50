@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Trending
+{% endblock %}
+
+{% block main %}
+    <table class="table" action="/index">
+      <thead>
+        <tr>
+          <th scope="col">rank</th>
+          <th scope="col">symbol</th>
+          <th scope="col">price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{stock.symbol}}</td>
+                <td>{{prices[loop.index - 1] | usd }}</td>
+            </tr>
+
+        {% endfor %}
+      </tbody>
+{% endblock %}

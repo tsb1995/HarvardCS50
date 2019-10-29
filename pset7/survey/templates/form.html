@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post" name="myForm">
+        <div class = "form-group">
+            <label for="name">Name</label>
+            <input type="text" class = "form-control" id = "name" placeholder = "name" name="name">
+        </div>
+
+        <div>
+            Mark whichever you hate the most:
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="hate" id="hate1" value="Bootstrap" checked>
+            <label class="form-check-label" for="hate1">
+            Bootstrap
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="hate" id="hate2" value="HTML">
+            <label class="form-check-label" for="hate2">
+            HTML
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="hate" id="hate3" value="Python">
+            <label class="form-check-label" for="hate3">
+            Python
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="hate" id="hate4" value="Javascript">
+            <label class="form-check-label" for="hate4">
+            Javascript
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Reason for taking CS50</label>
+            <select class="form-control" id="exampleFormControlSelect1" name ="reason">
+                <option>CS is cool</option>
+                <option>Impress my friends</option>
+                <option>Get a job</option>
+                <option>Build a solid coding foundation</option>
+                <option>Nothing better to do</option>
+            </select>
+        </div>
+
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        document.querySelector('form').onsubmit = function() {
+            if (!document.querySelector('input').value) {
+                alert('You must provide your name!');
+                return false;
+            }
+            else if (!document.querySelector('select').value) {
+                alert('You must provide your dorm!');
+                return false;
+            }
+            return true;
+        };
+
+    </script>
+
+{% endblock %}
